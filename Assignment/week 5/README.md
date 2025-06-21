@@ -81,7 +81,7 @@ The solution follows a comprehensive data science workflow:
 ## Key Visualizations and Insights
 
 ### 1. Missing Values Matrix
-**File:** `visualizations/missing_values_train.png`
+![Missing Values Matrix](./visualizations/missing_values_train.png)
 
 **Purpose:** To identify patterns in missing data and understand which features need imputation strategies.
 
@@ -91,7 +91,7 @@ The solution follows a comprehensive data science workflow:
 - This guided our preprocessing strategy to differentiate between structural missingness and random missing values.
 
 ### 2. Sale Price Distribution
-**File:** `visualizations/sale_price_distribution.png`
+![Sale Price Distribution](./visualizations/sale_price_distribution.png)
 
 **Purpose:** To understand the distribution of the target variable and identify potential modeling challenges.
 
@@ -101,7 +101,7 @@ The solution follows a comprehensive data science workflow:
 - Several high-value outliers are visible, which could potentially influence model performance.
 
 ### 3. Log-transformed Sale Price Distribution
-**File:** `visualizations/log_sale_price_distribution.png`
+![Log-transformed Sale Price Distribution](./visualizations/log_sale_price_distribution.png)
 
 **Purpose:** To verify the normalization effect of logarithmic transformation on the target variable.
 
@@ -111,7 +111,7 @@ The solution follows a comprehensive data science workflow:
 - The more normal distribution improves model convergence and stability, particularly for algorithms sensitive to the distribution of the target variable.
 
 ### 4. Correlation Heatmap
-**File:** `visualizations/correlation_heatmap.png`
+![Correlation Heatmap](./visualizations/correlation_heatmap.png)
 
 **Purpose:** To identify highly correlated features and understand relationships between variables.
 
@@ -122,7 +122,7 @@ The solution follows a comprehensive data science workflow:
 - The heatmap guided our feature engineering process, helping us identify candidates for creating composite features.
 
 ### 5. Top Features Scatter Plots
-**File:** `visualizations/top_features_scatter.png`
+![Top Features Scatter Plots](./visualizations/top_features_scatter.png)
 
 **Purpose:** To visualize the relationships between the most influential features and house prices.
 
@@ -133,10 +133,7 @@ The solution follows a comprehensive data science workflow:
 - The presence of non-linear relationships informed our decision to include tree-based models in our analysis.
 
 ### 6. Categorical Feature Analysis
-**Files:** 
-- `visualizations/boxplot_MSZoning.png`
-- `visualizations/boxplot_Neighborhood.png`
-- And others for key categorical features
+![Categorical Feature Analysis](./visualizations/boxplot_MSZoning.png)
 
 **Purpose:** To understand how categorical variables relate to house prices.
 
@@ -146,7 +143,7 @@ The solution follows a comprehensive data science workflow:
 - This analysis guided our categorical encoding strategy, making target encoding a logical choice to capture these price relationships.
 
 ### 7. Quality vs. Price Boxplot
-**File:** `visualizations/quality_vs_price.png`
+![Quality vs. Price Boxplot](./visualizations/quality_vs_price.png)
 
 **Purpose:** To visualize the impact of overall quality ratings on house prices.
 
@@ -156,7 +153,7 @@ The solution follows a comprehensive data science workflow:
 - The clear stratification confirms the importance of quality features in our model.
 
 ### 8. Model Comparison
-**File:** `visualizations/model_comparison_rmse.png`
+![Model Comparison](./visualizations/model_comparison_rmse.png)
 
 **Purpose:** To compare the performance of different regression models.
 
@@ -167,7 +164,7 @@ The solution follows a comprehensive data science workflow:
 - The gap between training and validation RMSE helps identify models with appropriate bias-variance tradeoff.
 
 ### 9. Feature Importance
-**File:** `visualizations/feature_importance.png`
+![Feature Importance](./visualizations/feature_importance.png)
 
 **Purpose:** To identify which features contribute most to the prediction model.
 
@@ -178,7 +175,7 @@ The solution follows a comprehensive data science workflow:
 - This analysis helps validate domain knowledge about housing market factors.
 
 ### 10. Actual vs. Predicted Prices
-**File:** `visualizations/actual_vs_predicted.png`
+![Actual vs. Predicted Prices](./visualizations/actual_vs_predicted.png)
 
 **Purpose:** To visualize model accuracy across the price spectrum.
 
@@ -188,7 +185,7 @@ The solution follows a comprehensive data science workflow:
 - This visualization guided our iterative improvement process, focusing on reducing errors for high-value properties.
 
 ### 11. Residual Analysis
-**File:** `visualizations/residual_plot.png`
+![Residual Analysis](./visualizations/residual_plot.png)
 
 **Purpose:** To check for patterns in prediction errors that might indicate model issues.
 
