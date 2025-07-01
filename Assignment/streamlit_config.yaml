@@ -1,4 +1,4 @@
 # Streamlit Cloud Configuration
 mainModule: week 7/app.py
-# Use root requirements file to avoid space in path issues
+# Use week 7 requirements file
 requirementsFile: week 7/requirements.txt 
