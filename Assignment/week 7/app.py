@@ -19,7 +19,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for better styling
+# Custom CSS for better styling with dark theme
 st.markdown("""
 <style>
     .main-header {
@@ -31,7 +31,7 @@ st.markdown("""
     
     .sub-header {
         font-size: 1.5rem;
-        color: #4b4bff;
+        color: #4b9fff;
         margin-top: 2rem;
         margin-bottom: 1rem;
     }
@@ -40,13 +40,16 @@ st.markdown("""
         font-size: 1.1rem;
         text-align: justify;
         margin-bottom: 2rem;
+        color: #e0e0e0;
+        color: #e0e0e0;
     }
     
     .highlight {
-        background-color: #f0f2f6;
+        background-color: #222222;
         padding: 1rem;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
+        border: 1px solid #333333;
     }
     
     .prediction-benign {
@@ -84,21 +87,23 @@ st.markdown("""
     .accuracy-metric {
         font-size: 1.2rem;
         font-weight: bold;
-        color: #4b4bff;
+        color: #4b9fff;
     }
     
     .model-selector {
         padding: 1rem;
-        background-color: #f8f9fa;
+        background-color: #111111;
         border-radius: 0.5rem;
         margin-bottom: 1.5rem;
+        border: 1px solid #333333;
     }
     
     .model-comparison {
         padding: 1rem;
-        background-color: #f0f2f6;
+        background-color: #111111;
         border-radius: 0.5rem;
         margin-top: 2rem;
+        border: 1px solid #333333;
     }
 </style>
 """, unsafe_allow_html=True)
