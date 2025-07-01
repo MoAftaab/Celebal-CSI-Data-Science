@@ -6,6 +6,22 @@ import streamlit as st
 week7_path = os.path.join(os.path.dirname(__file__), "week 7")
 sys.path.append(week7_path)
 
+# Make week 7 imports available
+try:
+    # Change to the week 7 directory to ensure imports work correctly
+    original_dir = os.getcwd()
+    os.chdir(week7_path)
+    
+    # Import needed modules
+    import utils
+    import visualizations
+    
+    # Change back to original directory
+    os.chdir(original_dir)
+except Exception as e:
+    st.error(f"Error importing modules: {str(e)}")
+    st.exception(e)
+
 # Check if the app file exists
 app_path = os.path.join(week7_path, "app.py")
 if not os.path.exists(app_path):
