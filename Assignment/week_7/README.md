@@ -1,5 +1,7 @@
 # Breast Cancer Prediction Web Application
 
+**Live Demo:** [Check out the deployed app!](https://moaftaab-celebal-csi-data-science-assignmentweek-7app-dmwt2h.streamlit.app/)
+
 This interactive web application provides a user-friendly interface for breast cancer prediction using machine learning. The application allows users to input patient data, receive predictions on cancer malignancy, and explore model performance metrics through various visualizations.
 
 ## How to Run This Project
