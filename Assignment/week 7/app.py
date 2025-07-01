@@ -7,9 +7,6 @@ import os
 import sys
 from sklearn.datasets import load_breast_cancer
 
-# Add parent directory to path to import modules from week 6
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 # Import custom modules
 from utils import BreastCancerModel, plot_feature_importance, plot_prediction_gauge, get_feature_explanation, plot_model_comparison
 from visualizations import plot_model_performance, plot_feature_distributions, create_prediction_input_ui
@@ -115,27 +112,20 @@ def load_model():
 @st.cache_data
 def load_test_data():
     """Load and cache test data for visualizations"""
-    try:
-        # Try to import the load_data function
-        sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "week 6"))
-        from week6.utils import load_data
-        X_train, X_test, y_train, y_test = load_data()
-        return X_test, y_test
-    except ImportError:
-        # If import fails, load breast cancer dataset directly
-        from sklearn.datasets import load_breast_cancer
-        from sklearn.model_selection import train_test_split
-        from sklearn.preprocessing import StandardScaler
-        
-        data = load_breast_cancer()
-        X = data.data
-        y = data.target
-        
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.25, random_state=42, stratify=y
-        )
-        
-        return X_test, y_test
+    # Load breast cancer dataset directly
+    from sklearn.datasets import load_breast_cancer
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import StandardScaler
+    
+    data = load_breast_cancer()
+    X = data.data
+    y = data.target
+    
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.25, random_state=42, stratify=y
+    )
+    
+    return X_test, y_test
 
 def main():
     # Header
