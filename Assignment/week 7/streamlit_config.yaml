@@ -1,0 +1,3 @@
+# Streamlit Cloud Configuration
+mainModule: app.py
+requirementsFile: requirements.txt 
