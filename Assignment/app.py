@@ -3,7 +3,7 @@ import sys
 import streamlit as st
 
 # Add the week 7 directory to the path
-week7_path = os.path.join(os.path.dirname(__file__), "Assignment", "week 7")
+week7_path = os.path.join(os.path.dirname(__file__), "week 7")
 sys.path.append(week7_path)
 
 # Check if the app file exists
@@ -12,10 +12,8 @@ if not os.path.exists(app_path):
     st.error(f"Could not find app at {app_path}")
     st.write("Current directory:", os.getcwd())
     st.write("Files in current directory:", os.listdir())
-    if os.path.exists("Assignment"):
-        st.write("Files in Assignment directory:", os.listdir("Assignment"))
-        if os.path.exists(os.path.join("Assignment", "week 7")):
-            st.write("Files in week 7 directory:", os.listdir(os.path.join("Assignment", "week 7")))
+    if os.path.exists("week 7"):
+        st.write("Files in week 7 directory:", os.listdir("week 7"))
 else:
     # Import and execute the app
     try:
