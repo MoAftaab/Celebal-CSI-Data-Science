@@ -11,9 +11,6 @@ import chromadb
 from langchain_community.vectorstores import Chroma
 import logging
 import sys
-import pysqlite3
-
-sys.modules["sqlite3"] = pysqlite3
 
 class DataRetriever:
     """
