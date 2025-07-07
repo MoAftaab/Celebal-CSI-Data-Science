@@ -133,4 +133,74 @@ This project is released under the MIT License.
 ## 🙏 Acknowledgments
 
 - This project uses the [LangChain](https://github.com/langchain-ai/langchain) framework
-- Dataset provided by [Kaggle](https://www.kaggle.com/datasets/sonalisingh1411/loan-approval-prediction) 
+- Dataset provided by [Kaggle](https://www.kaggle.com/datasets/sonalisingh1411/loan-approval-prediction)
+
+## Loan Approval Data Analysis and Streamlit App
+
+## Project Overview
+This project analyzes a public loan approval dataset and provides interactive data exploration and visualization using a Streamlit web application. The app allows users to explore key factors affecting loan approval, visualize important trends, and interact with the data through a user-friendly interface.
+
+## Dataset Used
+- **Source:** `week_8/data/raw/Training Dataset.csv`
+- **Description:**
+    - The dataset contains information about loan applicants, including demographic details, financial information, and loan approval status.
+    - **Columns:**
+        - `Loan_ID`: Unique identifier for each loan application
+        - `Gender`, `Married`, `Dependents`, `Education`, `Self_Employed`: Applicant demographics
+        - `ApplicantIncome`, `CoapplicantIncome`: Income details
+        - `LoanAmount`, `Loan_Amount_Term`: Loan details
+        - `Credit_History`: Credit history (1 = good, 0 = bad)
+        - `Property_Area`: Urban, Semiurban, or Rural
+        - `Loan_Status`: Loan approval outcome (`Y` = approved, `N` = not approved)
+    - **Rows:** 614 (after removing header)
+
+## Streamlit App Interface
+The application provides an intuitive interface for exploring the dataset, visualizing trends, and understanding the factors influencing loan approval decisions.
+
+![Streamlit Interface](visualizations/WhatsApp%20Image%202025-07-07%20at%2015.36.11_f1cabac6.jpg)
+*Figure: Streamlit app interface for loan approval data exploration.*
+
+## Visualizations and Insights
+All visualizations are generated as PNG files and are available in the `visualizations/` directory.
+
+### 1. Loan Status Distribution
+![Loan Status Distribution](visualizations/loan_status_pie.png)
+*This pie chart shows the proportion of approved (`Y`) and not approved (`N`) loans. Most applications are approved, but a significant portion are rejected, highlighting the importance of understanding approval criteria.*
+
+### 2. Credit History vs Loan Status
+![Credit History vs Loan Status](visualizations/credit_history_vs_loan_status.png)
+*Applicants with a good credit history (1) have a much higher approval rate compared to those with a bad credit history (0). This underscores the critical role of credit history in loan decisions.*
+
+### 3. Income by Loan Status
+![Income by Loan Status](visualizations/income_by_loan_status.png)
+*The boxplot reveals that while higher income can be associated with approval, there is considerable overlap. Some low-income applicants are approved, and some high-income applicants are not, indicating that income is not the sole factor.*
+
+### 4. Property Area vs Loan Status
+![Property Area vs Loan Status](visualizations/property_area_loan_status.png)
+*Loan approval rates vary by property area. Urban and semiurban applicants tend to have higher approval rates compared to rural applicants, possibly due to better access to financial services or different risk profiles.*
+
+### 5. Education vs Loan Status
+![Education vs Loan Status](visualizations/education_loan_status.png)
+*Graduates have a slightly higher approval rate than non-graduates, suggesting that education may play a role in the approval process, but it is not a dominant factor.*
+
+## How to Run the App
+1. Ensure all dependencies are installed (see `requirements.txt`).
+2. Generate the PNG visualizations by running:
+   ```bash
+   cd week_8/visualizations
+   python generate_visualizations.py
+   ```
+3. Start the Streamlit app:
+   ```bash
+   streamlit run ../app.py
+   ```
+4. Open the provided local URL in your browser to interact with the app.
+
+## Directory Structure
+- `data/raw/Training Dataset.csv`: The main dataset used for analysis
+- `visualizations/`: Contains all generated PNG images and the interface screenshot
+- `src/`: Source code for data processing and visualization
+- `app.py`: Main Streamlit application
+
+## Conclusion
+This project demonstrates how data visualization and interactive web apps can help uncover insights from loan approval data. The analysis highlights the importance of credit history, property area, and other factors in loan decisions, and provides a foundation for further exploration or predictive modeling. 
