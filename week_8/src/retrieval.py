@@ -244,3 +244,61 @@ class DataRetriever:
             print(f"Error retrieving documents: {e}")
             # Return empty results rather than crashing
             return [], [] 
+
+    def initialize_knowledge_base(self, data_path: str, force_rebuild: bool = False):
+        """Initializes the knowledge base by loading a pre-built vector store."""
+        logging.info("Initializing knowledge base...")
+
+        # In a deployed environment, we MUST NOT rebuild. We expect the store to be pre-built and included in the repo.
+        if not os.path.exists(self.vector_store_path) or not os.listdir(self.vector_store_path):
+            logging.error(f"Vector store not found or is empty at '{self.vector_store_path}'.")
+            logging.error("Please run the 'week_8/build_vector_store.py' script locally and commit the changes to your repository.")
+            raise FileNotFoundError(f"Vector store not found at {self.vector_store_path}. It must be pre-built before deployment.")
+
+        try:
+            logging.info(f"Loading existing vector store from {self.vector_store_path}")
+            self.vector_store = Chroma(
+                persist_directory=self.vector_store_path,
+                embedding_function=self.embeddings_model
+            )
+            # A simple check to see if the store is usable by trying to get one item.
+            self.vector_store.get(limit=1) 
+            logging.info("Vector store loaded successfully.")
+        except Exception as e:
+            logging.error(f"Fatal error loading vector store from {self.vector_store_path}: {e}", exc_info=True)
+            logging.error("The vector store might be corrupted or incompatible. Please try rebuilding it locally with 'week_8/build_vector_store.py'.")
+            raise
+
+    def _load_and_split_documents(self, data_path: str) -> List[Document]:
+        """Load documents from the specified path and split them into chunks."""
+        try:
+            logging.info(f"Loading data from {data_path}")
+            # Use the utility function for loading
+            from src.utils import load_dataset
+            df = load_dataset(data_path)
+            
+            # Convert DataFrame rows to Document objects
+            documents = []
+            for _, row in df.iterrows():
+                # Concatenate all columns into a single string for the document content
+                content = ". ".join([f"{col}: {val}" for col, val in row.items() if pd.notna(val)])
+                documents.append(Document(page_content=content))
+            
+            logging.info(f"Loaded {len(documents)} documents.")
+            
+            # Initialize text splitter
+            text_splitter = CharacterTextSplitter(
+                separator="\n",
+                chunk_size=1000,
+                chunk_overlap=100,
+                length_function=len
+            )
+            
+            # Split documents into chunks
+            chunks = text_splitter.split_documents(documents)
+            logging.info(f"Split documents into {len(chunks)} chunks.")
+            return chunks
+
+        except Exception as e:
+            logging.error(f"Error loading or splitting documents: {e}", exc_info=True)
+            return [] 

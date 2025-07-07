@@ -1,6 +1,5 @@
 import sys
-import pysqlite3
-sys.modules["sqlite3"] = pysqlite3
+import sqlite3
 import os
 import streamlit as st
 import pandas as pd
@@ -22,9 +21,14 @@ load_dotenv()
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# --- Robust Path Configuration ---
+# Get the absolute path of the directory where this script is located
+APP_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # Constants
-DATA_PATH = os.path.join("week_8", "data", "raw", "Training Dataset.csv")
-VECTOR_STORE_PATH = os.path.join("models", "vector_store")
+DATA_PATH = os.path.join(APP_DIR, "data", "raw", "Training Dataset.csv")
+VECTOR_STORE_PATH = os.path.join(APP_DIR, "models", "vector_store")
+CACHE_FOLDER = os.path.join(APP_DIR, "models", "huggingface_cache")
 DEFAULT_MODEL_TYPE = os.getenv("MODEL_TYPE", "gemini")  # Use Gemini as default
 DEFAULT_MODEL_NAME = os.getenv("MODEL_NAME", "models/gemini-2.5-flash")  # Use the working model
 DEFAULT_EMBEDDING_MODEL = "sentence-transformers/all-mpnet-base-v2"
@@ -62,6 +66,7 @@ def initialize_rag_pipeline():
             model_name="models/gemini-2.5-flash",  # Use the most reliable model
             vector_store_path=VECTOR_STORE_PATH,
             embedding_model_name=DEFAULT_EMBEDDING_MODEL,
+            cache_folder=CACHE_FOLDER,
             temperature=0.3,
             max_tokens=1024
         )
