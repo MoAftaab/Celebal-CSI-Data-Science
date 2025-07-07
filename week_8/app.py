@@ -69,7 +69,7 @@ def create_directories():
     os.makedirs(os.path.join("models", "vector_store"), exist_ok=True)
     
     # Create visualizations directory
-    os.makedirs(os.path.join("visualizations"), exist_ok=True)
+    os.makedirs(os.path.join(APP_DIR, "visualizations"), exist_ok=True)
 
 def initialize_rag_pipeline():
     """Initialize the RAG pipeline"""
@@ -107,7 +107,7 @@ def display_data_visualization(df):
     st.subheader("📊 Data Visualizations")
     
     # Create visualizations
-    visualizations = create_visualizations(df, save_dir="visualizations")
+    visualizations = create_visualizations(df, save_dir=os.path.join(APP_DIR, "visualizations"))
     
     # Create columns for visualizations
     col1, col2 = st.columns(2)
