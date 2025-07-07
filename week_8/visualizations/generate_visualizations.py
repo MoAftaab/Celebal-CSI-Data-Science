@@ -1,11 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 sns.set_theme()
 
 # Read the training dataset
-df = pd.read_csv('../data/raw/Training Dataset.csv')
+df = pd.read_csv(os.path.join('..', 'data', 'raw', 'Training Dataset.csv'))
 
 # 1. Loan Status Distribution (Pie Chart)
 plt.figure(figsize=(10, 8))

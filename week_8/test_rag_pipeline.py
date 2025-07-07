@@ -18,7 +18,7 @@ def test_rag_pipeline():
     load_dotenv()
     
     # Set constants
-    DATA_PATH = os.path.join("data", "raw", "Training Dataset.csv")
+    DATA_PATH = os.path.join("week_8", "data", "raw", "Training Dataset.csv")
     VECTOR_STORE_PATH = os.path.join("models", "vector_store")
     MODEL_TYPE = "gemini"
     MODEL_NAME = "models/gemini-1.5-flash"

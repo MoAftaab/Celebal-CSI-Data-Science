@@ -23,7 +23,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Constants
-DATA_PATH = os.path.join("data", "raw", "Training Dataset.csv")
+DATA_PATH = os.path.join("week_8", "data", "raw", "Training Dataset.csv")
 VECTOR_STORE_PATH = os.path.join("models", "vector_store")
 DEFAULT_MODEL_TYPE = os.getenv("MODEL_TYPE", "gemini")  # Use Gemini as default
 DEFAULT_MODEL_NAME = os.getenv("MODEL_NAME", "models/gemini-2.5-flash")  # Use the working model
