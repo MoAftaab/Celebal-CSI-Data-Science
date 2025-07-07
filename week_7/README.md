@@ -1,6 +1,6 @@
 # Breast Cancer Prediction Web Application
 
-**Live Demo:** [Check out the deployed app!](https://moaftaab-celebal-csi-data-science-assignmentweek-7app-dmwt2h.streamlit.app/)
+**Live Demo:** [Check out the deployed app!](https://moaftaab-celebal-csi-data-science-week-7app-4h9aal.streamlit.app/)
 
 This interactive web application provides a user-friendly interface for breast cancer prediction using machine learning. The application allows users to input patient data, receive predictions on cancer malignancy, and explore model performance metrics through various visualizations.
 
@@ -9,7 +9,7 @@ This interactive web application provides a user-friendly interface for breast c
 ### Prerequisites
 - Python 3.8 or higher
 - pip (Python package installer)
-
+l̥
 ### Installation Steps
 
 1. **Clone or download the repository**
