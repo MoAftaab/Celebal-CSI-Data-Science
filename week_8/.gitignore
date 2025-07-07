@@ -1,0 +1,9 @@
+# Ignore Hugging Face model cache
+models/huggingface_cache/
+
+# Ignore ChromaDB vector store
+models/vector_store/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc 
