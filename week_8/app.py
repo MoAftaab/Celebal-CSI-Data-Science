@@ -89,7 +89,7 @@ def initialize_rag_pipeline():
             data_path=DATA_PATH,
             model_type="gemini",  # Always use Gemini
             model_name="models/gemini-2.5-flash",  # Use the most reliable model
-            vector_store_path=VECTOR_STORE_PATH,
+            vector_store_path=None,  # Use in-memory vector store to avoid read-only filesystem errors
             embedding_model_name=DEFAULT_EMBEDDING_MODEL,
             temperature=0.3,
             max_tokens=1024
