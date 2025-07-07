@@ -1,5 +1,30 @@
 import sys
 import sqlite3
+
+
+# --- Patch sqlite3 with pysqlite3 for full-text search (FTS5) support ---
+# ChromaDB requires SQLite compiled with FTS5 enabled. In many hosted
+# environments (including Streamlit Cloud) the built-in `sqlite3` module is
+# not compiled with this extension which causes ChromaDB to raise a runtime
+# error at import time. The `pysqlite3-binary` package bundles an SQLite build
+# with FTS5 enabled. If that package is available we monkey-patch
+# `sys.modules` so every subsequent `import sqlite3` (including inside third-
+# party libraries) receives the patched implementation.
+#
+# The patch must be applied BEFORE any library (e.g. chromadb) imports
+# `sqlite3`, therefore we do it at the very beginning of this file, right
+# after importing `sys` and before the rest of the dependencies.
+
+try:
+    import pysqlite3 as _pysqlite3  # type: ignore  # Pylance: module may be absent locally
+    sys.modules["sqlite3"] = _pysqlite3
+    sys.modules["sqlite"] = _pysqlite3  # safeguard for alt import style
+except ImportError:
+    # Fall back to the standard sqlite3 module if pysqlite3 isn't available.
+    # The app may still work if the default build has FTS5 enabled.
+    pass
+
+import sqlite3
 import os
 import streamlit as st
 import pandas as pd
@@ -66,7 +91,6 @@ def initialize_rag_pipeline():
             model_name="models/gemini-2.5-flash",  # Use the most reliable model
             vector_store_path=VECTOR_STORE_PATH,
             embedding_model_name=DEFAULT_EMBEDDING_MODEL,
-            cache_folder=CACHE_FOLDER,
             temperature=0.3,
             max_tokens=1024
         )
