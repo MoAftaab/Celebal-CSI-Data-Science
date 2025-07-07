@@ -133,14 +133,14 @@ def create_visualizations(df: pd.DataFrame, save_dir: Optional[str] = None) -> D
         save_dir = "visualizations"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
-
+    
     # 1. Loan Status Distribution (Pie Chart)
     loan_status_pie_path = os.path.join(save_dir, 'loan_status_pie.png')
-    if 'Loan_Status' in df.columns:
+        if 'Loan_Status' in df.columns:
         # Only add if file exists
         if os.path.exists(loan_status_pie_path):
             figures['loan_status_pie'] = loan_status_pie_path
-
+        
     # 2. Credit History vs Loan Status
     credit_history_vs_loan_status_path = os.path.join(save_dir, 'credit_history_vs_loan_status.png')
     if os.path.exists(credit_history_vs_loan_status_path):
@@ -160,7 +160,7 @@ def create_visualizations(df: pd.DataFrame, save_dir: Optional[str] = None) -> D
     education_loan_status_path = os.path.join(save_dir, 'education_loan_status.png')
     if os.path.exists(education_loan_status_path):
         figures['education_loan_status'] = education_loan_status_path
-
+    
     return figures
 
 def format_response(content: str, context: Optional[Dict] = None) -> str:

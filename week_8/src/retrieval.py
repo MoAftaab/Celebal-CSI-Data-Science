@@ -7,8 +7,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.schema import Document
 from langchain.vectorstores.base import VectorStoreRetriever
+from langchain_chroma import Chroma
 import chromadb
-from langchain_community.vectorstores import Chroma
 import logging
 import sys
 
