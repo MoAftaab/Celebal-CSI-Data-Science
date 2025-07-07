@@ -192,14 +192,23 @@ class DataRetriever:
 
             # Create the new vector store
             try:
-                self.vector_store = Chroma.from_documents(
-                    documents=documents,
-                    embedding=self.embeddings,
-                    persist_directory=self.persist_directory
-                )
                 if self.persist_directory:
+                    # Persistent store backed by Chroma (requires write permissions)
+                    self.vector_store = Chroma.from_documents(
+                        documents=documents,
+                        embedding=self.embeddings,
+                        persist_directory=self.persist_directory
+                    )
+                    # Persist to disk only when a directory is provided
                     self.logger.info(f"Persisting vector store to {self.persist_directory}")
                     self.vector_store.persist()
+                else:
+                    # In-memory FAISS store (no filesystem writes, ideal for readonly deployments)
+                    self.vector_store = FAISS.from_documents(
+                        documents=documents,
+                        embedding=self.embeddings
+                    )
+                    self.logger.info("Created in-memory FAISS vector store (non-persistent).")
             except Exception as e:
                 self.logger.error(f"Fatal error creating new vector store: {e}")
                 # If creation fails, we cannot proceed.
