@@ -20,4 +20,5 @@ langchain-openai>=0.0.1
 plotly>=5.10.0
 google-generativeai>=0.3.0
 langchain-google-genai>=0.0.1
-huggingface-hub>=0.10.0 
+huggingface-hub>=0.10.0
+langchain-huggingface 
